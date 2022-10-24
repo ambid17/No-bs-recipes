@@ -1,9 +1,9 @@
-import './App.css';
+import './css/App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Groceries from './Groceries';
-import AddRecipe from './AddRecipe';
-import Recipes from './Recipes';
-import StandardNav from './StandardNav';
+import Groceries from './Components/Groceries';
+import AddRecipe from './Components/AddRecipe';
+import Recipes from './Components/Recipes';
+import StandardNav from './Components/StandardNav';
 
 function App() {
   return (
