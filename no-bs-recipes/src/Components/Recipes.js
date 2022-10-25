@@ -4,11 +4,17 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { ArrowRight } from 'react-bootstrap-icons';
+import SearchBar from './SearchBar';
 
 const Recipes = () => {
+    const onSearchSubmit = (input) => {
+        console.log(input);
+    }
+
     return (
         <div>
             <h1>Recipes</h1>
+            <SearchBar onSubmit={onSearchSubmit} />
             <Container fluid>
                 <Row>
                     <Col>
