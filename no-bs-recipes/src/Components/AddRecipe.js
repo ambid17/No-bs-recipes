@@ -1,20 +1,25 @@
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-import EditableList from './EditableList';
 import { useState } from 'react';
 
 const AddRecipe = () => {
     const [recipeName, setRecipeName] = useState('');
-    const [ingredients, setIngredients] = useState('');
-    const [instructions, setInstructions] = useState('');
+    const [ingredients, setIngredients] = useState([]);
+    const [directions, setDirections] = useState('');
 
     const handleSubmit = (e) =>{
         // Prevent refresh on submit
         e.preventDefault();
-        const recipe = {recipeName, ingredients, instructions};
+        const recipe = {recipeName, ingredients, directions};
 
         console.log(recipe);
+
+        // save to server
+    }
+
+    const addIngredient = (event) => {
+        event.preventDefault();
+        setIngredients( oldArray => [...oldArray, event.target.value] );
     }
 
     return (
@@ -32,11 +37,19 @@ const AddRecipe = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Ingredients</Form.Label>
-                    <Form.Control as="textarea" rows={3} onChange={ (event) => {setIngredients(event.target.value)} }/>
+                    <Form.Select onChange={ (event) => {setIngredients(event.target.value)} }/>
+                    <Form.Control onSubmit={ (event) => {addIngredient(event)} }/>
                 </Form.Group>
+                <div>
+                    {
+                        ingredients.map((i) => {
+                            return (<p>i</p>)
+                        })
+                    }
+                </div>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Instructions</Form.Label>
-                    <Form.Control as="textarea" rows={6} onChange={ (event) => {setInstructions(event.target.value)} }/>
+                    <Form.Label>Directions</Form.Label>
+                    <Form.Control rows={6} onChange={ (event) => {setDirections(event.target.value)} }/>
                 </Form.Group>
 
 
